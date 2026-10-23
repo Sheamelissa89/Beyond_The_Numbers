@@ -1,0 +1,361 @@
+/* Shared colors and sizing */
+:root {
+  --background: #101225;
+  --surface: #1b1e38;
+  --text: #f4f3ff;
+  --muted: #c1c3dd;
+  --accent: #b8a0ff;
+  --highlight: #83e8d1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.25em;
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 6px;
+}
+
+/* Header and navigation */
+header {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+header > a {
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* Welcome area */
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px 80px;
+}
+
+main > section:first-child {
+  padding: 100px 0;
+  max-width: 800px;
+}
+
+main > section:first-child > p:first-child {
+  color: var(--highlight);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 16px 0 24px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+main > section:first-child > p {
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+main > section:first-child > a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--background);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > section:first-child > a:hover {
+  background: var(--highlight);
+}
+
+/* Exploration cards */
+#explore {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  scroll-margin-top: 24px;
+}
+
+#explore > h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+article {
+  padding: 32px;
+  border: 1px solid #363b60;
+  border-radius: 20px;
+  background: var(--surface);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+article h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+article p {
+  color: var(--muted);
+}
+
+article a {
+  display: inline-block;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  padding: 24px;
+  border-top: 1px solid #363b60;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Smaller screens */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  main > section:first-child {
+    padding: 64px 0;
+  }
+
+  #explore {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  article {
+    transition: none;
+  }
+
+  article:hover {
+    transform: none;
+  }
+}
+/* Shared subject-page layouts */
+nav a[aria-current="page"] {
+  color: var(--highlight);
+  text-decoration: underline;
+}
+
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  scroll-margin-top: 24px;
+}
+
+.discovery-grid > h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.connection-panel {
+  margin-top: 48px;
+  padding: 32px;
+  border-left: 4px solid var(--highlight);
+  border-radius: 0 16px 16px 0;
+  background: var(--surface);
+}
+
+.connection-panel h2 {
+  margin-top: 0;
+}
+
+.connection-panel p {
+  max-width: 700px;
+  color: var(--muted);
+}
+
+.connection-panel .connection-note {
+  color: var(--highlight);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .discovery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Illustrations for each exploration world */
+.world-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 32px;
+  border: 1px solid #363b60;
+  border-radius: 24px;
+}
+
+/* Keep the introduction closer to its illustration */
+main > .world-image + section {
+  padding: 48px 0 64px;
+  max-width: 800px;
+}
+
+main > .world-image + section > p:first-child {
+  color: var(--highlight);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main > .world-image + section > p {
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+main > .world-image + section > a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--background);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > .world-image + section > a:hover {
+  background: var(--highlight);
+}
+/* Full-screen world backgrounds */
+body {
+  min-height: 100vh;
+  isolation: isolate;
+  background: var(--background);
+}
+
+.home-page {
+  --world-background: url("../assets/images/BeyondMathHome.png");
+}
+
+.patterns-page {
+  --world-background: url("../assets/images/Patternspage.png");
+}
+
+.geometry-page {
+  --world-background: url("../assets/images/Geometrypage.png");
+}
+
+.probability-page {
+  --world-background: url("../assets/images/Probabilitypage.png");
+}
+
+/* A fixed image layer stays behind the page as you scroll */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--world-background, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Translucent surfaces keep the text readable */
+header,
+footer {
+  background: rgba(16, 18, 37, 0.8);
+}
+
+article,
+.connection-panel {
+  background: rgba(27, 30, 56, 0.9);
+}
+
+main > section:first-child {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+/* Black outlines keep text clear over the artwork */
+header,
+main,
+footer,
+main > section:first-child {
+  text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  0   0 #000,
+     1px  0   0 #000,
+    -1px  1px 0 #000,
+     0    1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Stronger outline around the large headline */
+h1 {
+  -webkit-text-stroke: 2px #000;
+  paint-order: stroke fill;
+}
+
+/* Keep dark button text crisp */
+main > section:first-child > a {
+  text-shadow: none;
+}
