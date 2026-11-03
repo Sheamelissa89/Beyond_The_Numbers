@@ -2,80 +2,350 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <meta
     name="description"
-    content="Explore shapes, symmetry, and dimensions in the world around you."
+    content="Explore area, perimeter, angles, and reflection symmetry through interactive geometry activities."
   >
+
   <title>Geometry | Beyond the Numbers</title>
 
   <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../js/main.js" defer></script>
+  <link rel="stylesheet" href="../static/css/geometry.css">
+  <link rel="stylesheet" href="../static/css/header.css">
+
+  <script defer src="../js/geometry.js"></script>
 </head>
+
 <body class="geometry-page">
-  <header>
-    <a href="../index.html">Beyond the Numbers</a>
+  <header class="shared-header">
+    <a class="brand" href="home.html">Beyond the Numbers</a>
 
     <nav aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="basic-math.html">Basic Math</a>
+      <a href="fractions.html">Fractions</a>
       <a href="patterns.html">Patterns</a>
       <a href="geometry.html" aria-current="page">Geometry</a>
       <a href="probability.html">Probability</a>
+      <a href="codex.html">Codex</a>
     </nav>
   </header>
 
   <main>
     <section aria-labelledby="page-heading">
       <p>See the world from a new angle.</p>
+
       <h1 id="page-heading">Every shape has a story.</h1>
+
       <p>
-        From honeycombs to city skylines, geometry shapes our world.
-        Explore the lines, angles, and dimensions behind it all.
+        Stretch a shape. Turn a ray. Reflect a design.
+        Discover geometry by changing something and
+        watching what happens.
       </p>
-      <a href="#discover">Discover geometry</a>
+
+      <div class="geometry-actions">
+        <a href="#shape-lab">Explore shapes</a>
+        <a href="#angle-lab">Explore angles</a>
+        <a href="#symmetry-lab">Create symmetry</a>
+      </div>
     </section>
 
-    <section id="discover" class="discovery-grid"
-             aria-labelledby="discover-heading">
-      <h2 id="discover-heading">Where will you start?</h2>
+    <!-- AREA AND PERIMETER -->
+    <section
+      id="shape-lab"
+      class="geometry-panel"
+      aria-labelledby="shape-heading"
+    >
+      <p class="geometry-eyebrow">01 / Shape laboratory</p>
 
-      <article>
-        <h3>Shapes and space</h3>
-        <p>
-          Explore how points, lines, and angles come together
-          to create shapes in two and three dimensions.
-        </p>
-      </article>
+      <h2 id="shape-heading">Inside a shape. Around its edge.</h2>
 
-      <article>
-        <h3>Symmetry and balance</h3>
-        <p>
-          Discover what happens when shapes reflect, rotate,
-          and repeat—from butterfly wings to tiled floors.
-        </p>
-      </article>
-
-      <article>
-        <h3>Build with geometry</h3>
-        <p>
-          A future workspace for combining shapes,
-          exploring dimensions, and creating your own designs.
-        </p>
-      </article>
-    </section>
-
-    <section class="connection-panel" aria-labelledby="connection-heading">
-      <h2 id="connection-heading">Beyond this subject</h2>
       <p>
-        How does the shape of something too small to see affect
-        the world around us? In Beyond the Elements, we’ll explore
-        the three-dimensional arrangements of atoms in molecules.
+        Change the rectangle’s dimensions.
+        Each small grid square represents one square unit.
+        The outline marks its perimeter.
       </p>
-      <p class="connection-note">A future bridge to Beyond the Elements.</p>
+
+      <div class="geometry-layout">
+        <svg
+          class="geometry-model"
+          viewBox="0 0 360 280"
+          role="img"
+          aria-labelledby="rectangle-title rectangle-description"
+        >
+          <title id="rectangle-title">Adjustable rectangle</title>
+          <desc id="rectangle-description"></desc>
+          <g id="rectangle-drawing"></g>
+        </svg>
+
+        <div>
+          <label for="rectangle-width">
+            Width
+            <output id="width-value" for="rectangle-width"></output>
+
+            <input
+              id="rectangle-width"
+              type="range"
+              min="1"
+              max="12"
+              step="1"
+              value="6"
+            >
+          </label>
+
+          <label for="rectangle-height">
+            Height
+            <output id="height-value" for="rectangle-height"></output>
+
+            <input
+              id="rectangle-height"
+              type="range"
+              min="1"
+              max="10"
+              step="1"
+              value="4"
+            >
+          </label>
+
+          <dl class="geometry-results">
+            <div>
+              <dt>Area</dt>
+              <dd id="rectangle-area"></dd>
+            </div>
+
+            <div>
+              <dt>Perimeter</dt>
+              <dd id="rectangle-perimeter"></dd>
+            </div>
+          </dl>
+
+          <p id="rectangle-explanation" class="geometry-note"></p>
+
+          <div class="geometry-actions">
+            <button id="make-square" type="button">
+              Make a square
+            </button>
+
+            <button id="reset-rectangle" type="button">
+              Reset shape
+            </button>
+          </div>
+
+          <p>
+            <strong>Try this:</strong>
+            Compare a 6 × 4 rectangle with a 8 × 3 rectangle.
+            What stays the same? What changes?
+          </p>
+        </div>
+      </div>
     </section>
+
+    <!-- ANGLES -->
+    <section
+      id="angle-lab"
+      class="geometry-panel"
+      aria-labelledby="angle-heading"
+    >
+      <p class="geometry-eyebrow">02 / Angle observatory</p>
+
+      <h2 id="angle-heading">How far did it turn?</h2>
+
+      <p>
+        An angle measures a turn between two rays.
+        The gold ray stays still while the cyan ray turns
+        counterclockwise.
+      </p>
+
+      <div class="geometry-layout">
+        <svg
+          class="geometry-model"
+          viewBox="0 0 360 320"
+          role="img"
+          aria-labelledby="angle-title angle-description"
+        >
+          <title id="angle-title">Adjustable angle</title>
+          <desc id="angle-description"></desc>
+
+          <circle
+            cx="180"
+            cy="160"
+            r="110"
+            fill="none"
+            stroke="#424e70"
+            stroke-dasharray="4 6"
+          ></circle>
+
+          <path id="angle-arc" class="angle-arc"></path>
+
+          <line
+            x1="180"
+            y1="160"
+            x2="300"
+            y2="160"
+            stroke="#f2cd83"
+            stroke-width="5"
+            stroke-linecap="round"
+          ></line>
+
+          <line
+            id="moving-ray"
+            x1="180"
+            y1="160"
+            x2="180"
+            y2="40"
+            stroke="#8be3e5"
+            stroke-width="5"
+            stroke-linecap="round"
+          ></line>
+
+          <circle cx="180" cy="160" r="6" fill="#ffffff"></circle>
+        </svg>
+
+        <div>
+          <label for="angle-slider">
+            Angle
+            <output id="angle-value" for="angle-slider"></output>
+
+            <input
+              id="angle-slider"
+              type="range"
+              min="0"
+              max="360"
+              step="1"
+              value="90"
+            >
+          </label>
+
+          <p id="angle-type" class="geometry-big-value"></p>
+          <p id="angle-explanation" class="geometry-note"></p>
+
+          <div class="geometry-actions">
+            <button type="button" data-angle-preset="45">45°</button>
+            <button type="button" data-angle-preset="90">90°</button>
+            <button type="button" data-angle-preset="135">135°</button>
+            <button type="button" data-angle-preset="180">180°</button>
+            <button type="button" data-angle-preset="270">270°</button>
+            <button type="button" data-angle-preset="360">360°</button>
+          </div>
+
+          <p>
+            <strong>Try this:</strong>
+            Compare 0° and 360°. The rays line up in both cases,
+            but one represents no turn and the other a complete turn.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLECTION SYMMETRY -->
+    <section
+      id="symmetry-lab"
+      class="geometry-panel"
+      aria-labelledby="symmetry-heading"
+    >
+      <p class="geometry-eyebrow">03 / Symmetry studio</p>
+
+      <h2 id="symmetry-heading">One design. Two reflected halves.</h2>
+
+      <p id="symmetry-help">
+        Select tiles to build a design.
+        With mirror mode on, each change is also applied
+        across the vertical center line.
+        Tiles can be selected using a mouse, touch, or keyboard.
+      </p>
+
+      <div class="geometry-layout">
+        <div>
+          <div
+            id="symmetry-grid"
+            class="symmetry-grid"
+            role="group"
+            aria-label="Eight by eight reflection design"
+            aria-describedby="symmetry-help"
+          ></div>
+
+          <p class="mirror-caption">
+            The gold line is the reflection axis.
+          </p>
+        </div>
+
+        <div>
+          <label class="mirror-control" for="mirror-mode">
+            <input id="mirror-mode" type="checkbox" checked>
+            Mirror mode
+          </label>
+
+          <div class="geometry-actions">
+            <button id="symmetry-reflect" type="button">
+              Copy left to right
+            </button>
+
+            <button id="symmetry-clear" type="button">
+              Clear design
+            </button>
+
+            <button id="symmetry-example" type="button">
+              Example design
+            </button>
+          </div>
+
+          <p
+            id="symmetry-status"
+            class="geometry-note"
+            role="status"
+            aria-atomic="true"
+          ></p>
+
+          <p>
+            <strong>Try this:</strong>
+            Turn mirror mode off and change just one tile.
+            Is the design still symmetric?
+            Use Copy left to right to restore matching halves.
+          </p>
+
+          <p>
+            Turning mirror mode on reflects your existing
+            left half onto the right half.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="connection-panel"
+      aria-labelledby="connections-heading"
+    >
+      <h2 id="connections-heading">Shapes connect ideas.</h2>
+
+      <p>
+        Area connects to multiplication.
+        Angles describe turns.
+        Symmetry helps us recognize patterns.
+      </p>
+
+      <div class="geometry-actions">
+        <a href="basic-math.html#multiplication">Multiplication</a>
+        <a href="patterns.html">Patterns</a>
+        <a href="codex.html">Mathematical Codex</a>
+      </div>
+    </section>
+
+    <noscript>
+      <p>
+        Enable JavaScript to resize shapes,
+        explore angles, and build reflected designs.
+      </p>
+    </noscript>
   </main>
 
   <footer>
-    <p>Beyond the Numbers — Keep asking. Keep exploring.</p>
+    <p>Beyond the Numbers — Discover another dimension.</p>
   </footer>
 </body>
 </html>

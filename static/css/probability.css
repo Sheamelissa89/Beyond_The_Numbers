@@ -1,0 +1,293 @@
+/* ==========================================================
+   PROBABILITY — EXPERIMENT LABORATORIES
+
+   Background and general layout: style.css
+   Bubble navigation: header.css
+   ========================================================== */
+
+.probability-page .probability-panel {
+  min-width: 0;
+  margin-bottom: 40px;
+  padding: 30px;
+
+  color: #f5f1ff;
+  background: rgba(8, 15, 35, 0.95);
+
+  border: 1px solid rgba(197, 176, 255, 0.3);
+  border-radius: 20px;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  scroll-margin-top: 24px;
+}
+
+.probability-page .probability-panel h2 {
+  margin-top: 0;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.2;
+}
+
+.probability-page .probability-panel h3 {
+  color: #f2cd83;
+  font-size: 19px;
+}
+
+.probability-page .probability-panel p {
+  color: #cbd0e5;
+  text-shadow: none;
+}
+
+.probability-page .probability-panel .probability-eyebrow {
+  color: #c5b0ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.probability-page .probability-intro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.probability-page .probability-note {
+  padding-left: 16px;
+  border-left: 3px solid #f2cd83;
+}
+
+/* Controls */
+
+.probability-page .probability-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 22px;
+}
+
+.probability-page .probability-actions a,
+.probability-page .probability-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 10px 16px;
+
+  color: #f5f1ff;
+  background: #282343;
+
+  border: 1px solid #9b8bbd;
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.probability-page .probability-actions a:hover,
+.probability-page .probability-actions button:hover {
+  background: #3c345c;
+  border-color: #c5b0ff;
+}
+
+.probability-page .probability-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.probability-page .probability-panel label {
+  display: block;
+  color: #e0dced;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.probability-page .probability-panel select {
+  display: block;
+
+  width: 100%;
+  max-width: 400px;
+  min-height: 46px;
+  margin-block: 10px 20px;
+  padding: 10px 12px;
+
+  color: #f5f1ff;
+  background: #080f25;
+
+  border: 1px solid #8992b5;
+  border-radius: 9px;
+
+  font: inherit;
+}
+
+.probability-page .probability-panel input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  margin-block: 12px;
+  accent-color: #c5b0ff;
+}
+
+.probability-page .probability-panel output {
+  margin-left: 8px;
+  color: #8be3e5;
+  font-variant-numeric: tabular-nums;
+}
+
+.probability-page .probability-actions a:focus-visible,
+.probability-page .probability-panel button:focus-visible,
+.probability-page .probability-panel input:focus-visible,
+.probability-page .probability-panel select:focus-visible {
+  outline: 3px solid #8be3e5;
+  outline-offset: 4px;
+}
+
+/* Latest coin or die outcome */
+
+.probability-page .chance-display {
+  display: grid;
+  place-items: center;
+
+  width: 88px;
+  height: 88px;
+  margin-block: 24px;
+
+  color: #f2cd83;
+  background: #17213b;
+
+  border: 2px solid #c5b0ff;
+  border-radius: 50%;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.probability-page #dice-display {
+  border-radius: 18px;
+}
+
+.probability-page .trial-total {
+  margin-top: 24px;
+  font-weight: 700;
+}
+
+.probability-page .probability-feedback {
+  min-height: 3em;
+  margin-top: 20px;
+}
+
+/* Results charts */
+
+.probability-page .chance-results {
+  display: grid;
+  gap: 16px;
+
+  margin: 24px 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.probability-page .chance-result {
+  padding: 16px;
+
+  background: #0d172d;
+  border: 1px solid #53627f;
+  border-radius: 12px;
+}
+
+.probability-page .chance-result-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 10px;
+  color: #f5f1ff;
+}
+
+.probability-page .chance-result-detail {
+  margin-top: 10px;
+  color: #cbd0e5;
+  font-size: 14px;
+}
+
+.probability-page .chance-track {
+  height: 14px;
+  overflow: hidden;
+
+  background: #242e47;
+  border-radius: 999px;
+}
+
+.probability-page .chance-fill {
+  height: 100%;
+  background: #c5b0ff;
+  border-radius: inherit;
+}
+
+/* Marble bag */
+
+.probability-page .bag-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  margin-block: 24px;
+}
+
+.probability-page .marble-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  min-height: 76px;
+  padding: 18px;
+
+  background: #0a1429;
+  border: 1px solid #64718f;
+  border-radius: 16px;
+}
+
+.probability-page .marble {
+  display: grid;
+  place-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: #10182b;
+  background: var(--marble-color);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+
+  box-shadow:
+    inset 3px 3px 5px rgba(255, 255, 255, 0.3),
+    0 4px 7px rgba(0, 0, 0, 0.35);
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+@media (max-width: 950px) {
+  .probability-page .probability-intro,
+  .probability-page .bag-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .probability-page .probability-panel {
+    padding: 20px;
+  }
+
+  .probability-page .probability-actions button {
+    flex: 1 1 120px;
+  }
+}

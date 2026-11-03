@@ -2,76 +2,382 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <meta
     name="description"
-    content="Explore patterns in numbers, nature, and everyday life."
+    content="Explore number sequences, create repeating patterns, and experiment with mathematical spirals."
   >
+
   <title>Patterns | Beyond the Numbers</title>
 
   <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../js/main.js" defer></script>
+  <link rel="stylesheet" href="../static/css/patterns.css">
+  <link rel="stylesheet" href="../static/css/header.css">
+
+  <script defer src="../js/patterns.js"></script>
 </head>
+
 <body class="patterns-page">
-  <header>
-    <a href="../index.html">Beyond the Numbers</a>
+  <header class="shared-header">
+    <a class="brand" href="home.html">Beyond the Numbers</a>
 
     <nav aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="basic-math.html">Basic Math</a>
+      <a href="fractions.html">Fractions</a>
       <a href="patterns.html" aria-current="page">Patterns</a>
       <a href="geometry.html">Geometry</a>
       <a href="probability.html">Probability</a>
+      <a href="codex.html">Codex</a>
     </nav>
   </header>
 
   <main>
     <section aria-labelledby="page-heading">
       <p>Explore the connections.</p>
-      <h1 id="page-heading">Small rules. Endless possibilities.</h1>
+
+      <h1 id="page-heading">
+        Small rules. Endless possibilities.
+      </h1>
+
       <p>
-        From repeating rhythms to spiraling shells, patterns are
-        everywhere. Explore how they begin, grow, and connect.
+        Change a number. Repeat a shape. Turn an angle.
+        Discover how simple rules create surprising structures.
       </p>
-      <a href="#discover">Discover patterns</a>
+
+      <div class="pattern-links">
+        <a href="#sequences">Number sequences</a>
+        <a href="#pattern-builder">Build a pattern</a>
+        <a href="#spiral-lab">Explore spirals</a>
+      </div>
     </section>
 
-    <section id="discover" class="discovery-grid"
-             aria-labelledby="discover-heading">
-      <h2 id="discover-heading">Where will you start?</h2>
+    <!-- NUMBER SEQUENCES -->
+    <section
+      id="sequences"
+      class="pattern-panel"
+      aria-labelledby="sequences-heading"
+    >
+      <p class="pattern-eyebrow">01 / Follow a rule</p>
 
-      <article>
-        <h3>Number sequences</h3>
-        <p>
-          Follow a trail of numbers and discover the rule
-          connecting one step to the next.
-        </p>
-      </article>
+      <h2 id="sequences-heading">The number machine</h2>
 
-      <article>
-        <h3>Patterns in nature</h3>
-        <p>
-          Look for spirals, symmetry, and repetition
-          in the living world.
-        </p>
-      </article>
+      <p>
+        Choose a rule and a starting number.
+        Follow the rule to predict the next number.
+      </p>
 
-      <article>
-        <h3>Build a pattern</h3>
-        <p>
-          A future workspace for creating your own
-          patterns with colors, shapes, and numbers.
-        </p>
-      </article>
+      <div class="pattern-controls">
+        <label for="sequence-rule">
+          Rule
+
+          <select id="sequence-rule">
+            <option value="add">Add the same amount</option>
+            <option value="multiply">Multiply by the same amount</option>
+          </select>
+        </label>
+
+        <label for="sequence-start">
+          Starting number
+
+          <input
+            id="sequence-start"
+            type="number"
+            min="1"
+            max="10"
+            step="1"
+            value="2"
+          >
+        </label>
+
+        <label for="sequence-step">
+          <span id="sequence-step-label">Amount to add</span>
+
+          <select id="sequence-step">
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="sequence-rule-description"></p>
+
+      <ol
+        id="sequence-values"
+        class="sequence-values"
+        aria-label="First five numbers in the sequence"
+      ></ol>
+
+      <form id="sequence-form" novalidate>
+        <label for="sequence-answer">
+          What comes next under this rule?
+
+          <input
+            id="sequence-answer"
+            type="number"
+            min="0"
+            step="1"
+            inputmode="numeric"
+            autocomplete="off"
+            aria-describedby="sequence-rule-description sequence-feedback"
+            required
+          >
+        </label>
+
+        <div class="pattern-actions">
+          <button type="submit">Check answer</button>
+          <button type="button" id="sequence-hint">Hint</button>
+          <button type="button" id="sequence-explain">Explain</button>
+          <button type="button" id="sequence-random">New challenge</button>
+        </div>
+
+        <p
+          id="sequence-feedback"
+          class="pattern-feedback"
+          role="status"
+          aria-atomic="true"
+        ></p>
+      </form>
+
+      <p class="pattern-note">
+        <strong>Something to investigate:</strong>
+        A short list of numbers can fit more than one rule.
+        Here, the chosen rule tells us which continuation to use.
+      </p>
     </section>
 
-    <section class="connection-panel" aria-labelledby="connection-heading">
+    <!-- REPEATING PATTERNS -->
+    <section
+      id="pattern-builder"
+      class="pattern-panel"
+      aria-labelledby="builder-heading"
+    >
+      <p class="pattern-eyebrow">02 / Create a repeating unit</p>
+
+      <h2 id="builder-heading">Build your own pattern</h2>
+
+      <p>
+        Choose four shapes to make one unit.
+        Then repeat that unit and watch the longer pattern appear.
+      </p>
+
+      <div class="pattern-controls shape-controls">
+        <label for="shape-1">
+          Position 1
+          <select id="shape-1" class="shape-choice">
+            <option value="star" selected>Star</option>
+            <option value="circle">Circle</option>
+            <option value="triangle">Triangle</option>
+            <option value="diamond">Diamond</option>
+          </select>
+        </label>
+
+        <label for="shape-2">
+          Position 2
+          <select id="shape-2" class="shape-choice">
+            <option value="star">Star</option>
+            <option value="circle" selected>Circle</option>
+            <option value="triangle">Triangle</option>
+            <option value="diamond">Diamond</option>
+          </select>
+        </label>
+
+        <label for="shape-3">
+          Position 3
+          <select id="shape-3" class="shape-choice">
+            <option value="star" selected>Star</option>
+            <option value="circle">Circle</option>
+            <option value="triangle">Triangle</option>
+            <option value="diamond">Diamond</option>
+          </select>
+        </label>
+
+        <label for="shape-4">
+          Position 4
+          <select id="shape-4" class="shape-choice">
+            <option value="star">Star</option>
+            <option value="circle" selected>Circle</option>
+            <option value="triangle">Triangle</option>
+            <option value="diamond">Diamond</option>
+          </select>
+        </label>
+      </div>
+
+      <label for="pattern-repeats">
+        Repetitions:
+        <output id="pattern-repeat-value" for="pattern-repeats">3</output>
+
+        <input
+          id="pattern-repeats"
+          type="range"
+          min="2"
+          max="6"
+          step="1"
+          value="3"
+        >
+      </label>
+
+      <div
+        id="pattern-preview"
+        class="pattern-preview"
+        role="group"
+        aria-label="Your repeating shape pattern"
+      ></div>
+
+      <p
+        id="pattern-description"
+        class="pattern-feedback"
+        role="status"
+        aria-atomic="true"
+      ></p>
+
+      <div class="pattern-actions">
+        <button type="button" id="pattern-random">
+          Surprise me
+        </button>
+
+        <button type="button" id="pattern-reset">
+          Reset pattern
+        </button>
+      </div>
+
+      <p class="pattern-note">
+        <strong>Try this:</strong>
+        Make star, circle, star, circle.
+        You entered four shapes, but can you find a smaller unit
+        that produces the same repeating pattern?
+      </p>
+    </section>
+
+    <!-- SPIRAL MODEL -->
+    <section
+      id="spiral-lab"
+      class="pattern-panel"
+      aria-labelledby="spiral-heading"
+    >
+      <p class="pattern-eyebrow">03 / Discover a growing arrangement</p>
+
+      <h2 id="spiral-heading">The spiral observatory</h2>
+
+      <p>
+        Each new dot moves farther from the center and turns
+        by the same angle. Change that angle to explore
+        spokes, curves, and spiral-like arrangements.
+      </p>
+
+      <div class="spiral-layout">
+        <svg
+          id="spiral-model"
+          viewBox="0 0 500 500"
+          role="img"
+          aria-labelledby="spiral-title spiral-description"
+        >
+          <title id="spiral-title">Mathematical dot arrangement</title>
+
+          <desc id="spiral-description">
+            Dots arranged using a fixed turning angle.
+          </desc>
+
+          <g id="spiral-dots"></g>
+        </svg>
+
+        <div>
+          <label for="spiral-angle">
+            Turning angle
+
+            <output id="spiral-angle-value" for="spiral-angle">
+              137.5°
+            </output>
+
+            <input
+              id="spiral-angle"
+              type="range"
+              min="1"
+              max="180"
+              step="0.1"
+              value="137.5"
+            >
+          </label>
+
+          <label for="spiral-count">
+            Number of dots
+
+            <output id="spiral-count-value" for="spiral-count">
+              180
+            </output>
+
+            <input
+              id="spiral-count"
+              type="range"
+              min="30"
+              max="300"
+              step="10"
+              value="180"
+            >
+          </label>
+
+          <div class="pattern-actions">
+            <button type="button" data-angle="90">90°</button>
+            <button type="button" data-angle="120">120°</button>
+            <button type="button" data-angle="137.5">137.5°</button>
+            <button type="button" id="spiral-reset">Reset</button>
+          </div>
+
+          <p id="spiral-observation" class="pattern-note"></p>
+
+          <p>
+            <strong>Try this:</strong>
+            Compare 90°, 120°, and 137.5°.
+            Then move the slider just a little.
+            How much does the arrangement change?
+          </p>
+
+          <p>
+            This is a mathematical model for exploring
+            arrangements. It is not a simulation of how
+            a particular plant grows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="connection-panel"
+      aria-labelledby="connection-heading"
+    >
       <h2 id="connection-heading">Beyond this subject</h2>
+
       <p>
-        How does a repeating pattern become a structure?
-        In Beyond the Elements, we’ll connect this question
-        to atoms and crystal arrangements.
+        Repeating patterns connect to multiplication,
+        symmetry, and geometric structures.
+        Follow another idea and see what you discover.
       </p>
-      <p class="connection-note">A future bridge to Beyond the Elements.</p>
+
+      <div class="pattern-links">
+        <a href="basic-math.html#multiplication">Multiplication</a>
+        <a href="geometry.html">Geometry</a>
+        <a href="codex.html">Mathematical Codex</a>
+      </div>
+
+      <p class="connection-note">
+        A future bridge to Beyond the Elements will explore
+        patterns in atoms and crystal arrangements.
+      </p>
     </section>
+
+    <noscript>
+      <p>
+        Enable JavaScript to use the number machine,
+        pattern builder, and spiral explorer.
+      </p>
+    </noscript>
   </main>
 
   <footer>

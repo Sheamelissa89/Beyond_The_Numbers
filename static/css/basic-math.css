@@ -1,0 +1,213 @@
+/* ==========================================================
+   BASIC MATH — FOUR INDEPENDENT PRACTICE AREAS
+   ========================================================== */
+
+.basic-math-page .operation-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.basic-math-page .operation-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 10px 18px;
+
+  color: #f5f1ff;
+  background: rgba(16, 22, 48, 0.92);
+
+  border: 1px solid rgba(197, 176, 255, 0.45);
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.basic-math-page .operation-links a:hover {
+  background: #413660;
+}
+
+/* Two columns on wider screens */
+
+.basic-math-page .math-labs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+
+  margin-bottom: 48px;
+}
+
+.basic-math-page .math-lab {
+  --lab-accent: #c5b0ff;
+
+  min-width: 0;
+  margin: 0;
+  padding: 28px;
+
+  color: #f5f1ff;
+  background: rgba(9, 15, 35, 0.95);
+
+  border: 1px solid rgba(197, 176, 255, 0.28);
+  border-radius: 20px;
+
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  scroll-margin-top: 24px;
+}
+
+.basic-math-page #subtraction {
+  --lab-accent: #8be3e5;
+}
+
+.basic-math-page #multiplication {
+  --lab-accent: #f2cd83;
+}
+
+.basic-math-page #division {
+  --lab-accent: #f2b3d8;
+}
+
+.basic-math-page .math-lab .lab-symbol {
+  display: grid;
+  place-items: center;
+
+  width: 54px;
+  height: 54px;
+  margin: 0 0 18px;
+
+  color: var(--lab-accent);
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid var(--lab-accent);
+  border-radius: 50%;
+
+  font-size: 32px;
+  line-height: 1;
+  text-shadow: none;
+}
+
+.basic-math-page .math-lab h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.basic-math-page .math-lab p {
+  color: #cbd0e5;
+  text-shadow: none;
+}
+
+.basic-math-page .worked-example {
+  padding: 12px 16px;
+  border-left: 3px solid var(--lab-accent);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.basic-math-page .math-problem {
+  margin: 24px 0 16px;
+
+  color: #f5f1ff;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.basic-math-page .math-lab label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.basic-math-page .math-lab input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+
+  color: #f5f1ff;
+  background: #080e22;
+
+  border: 1px solid #8d96b5;
+  border-radius: 10px;
+
+  font: inherit;
+}
+
+.basic-math-page .math-lab input[aria-invalid="true"] {
+  border-color: #ffb5bd;
+}
+
+.basic-math-page .math-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+.basic-math-page .math-actions button {
+  min-height: 44px;
+  padding: 10px 14px;
+
+  color: #171425;
+  background: var(--lab-accent);
+
+  border: 1px solid var(--lab-accent);
+  border-radius: 9px;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.basic-math-page .math-actions button[type="button"] {
+  color: #f5f1ff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.basic-math-page .math-actions button:hover {
+  filter: brightness(1.15);
+}
+
+.basic-math-page .math-feedback {
+  min-height: 3.5em;
+  margin: 18px 0 0;
+  font-size: 15px;
+}
+
+.basic-math-page .math-feedback[data-state="correct"] {
+  color: #a8f0d1;
+}
+
+.basic-math-page .math-feedback[data-state="retry"] {
+  color: #ffdaad;
+}
+
+.basic-math-page .operation-links a:focus-visible,
+.basic-math-page .math-lab input:focus-visible,
+.basic-math-page .math-actions button:focus-visible {
+  outline: 3px solid #8be3e5;
+  outline-offset: 4px;
+}
+
+@media (max-width: 1000px) {
+  .basic-math-page .math-labs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .basic-math-page .math-lab {
+    padding: 20px;
+  }
+
+  .basic-math-page .math-actions button {
+    flex: 1 1 120px;
+  }
+}

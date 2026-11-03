@@ -1,0 +1,95 @@
+/* ==========================================================
+   CODEX — FUNCTION GRAPH EXPLORER
+   ========================================================== */
+
+.codex-page .graph-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 30px;
+
+  margin-top: 24px;
+}
+
+.codex-page .graph-layout > * {
+  min-width: 0;
+}
+
+.codex-page .graph-equation {
+  margin-bottom: 16px;
+
+  color: #f2cd83;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.codex-page #function-graph {
+  display: block;
+  width: 100%;
+  max-width: 580px;
+  margin-inline: auto;
+
+  background: #080f23;
+  border: 1px solid #64718f;
+  border-radius: 14px;
+}
+
+.codex-page #graph-grid text {
+  fill: #cbd0e5;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+}
+
+.codex-page #graph-curve {
+  fill: none;
+  stroke: #98e3e5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.codex-page #graph-lab label {
+  margin-top: 18px;
+}
+
+.codex-page #graph-lab label:first-child {
+  margin-top: 0;
+}
+
+.codex-page #graph-lab output {
+  color: #98e3e5;
+}
+
+.codex-page .graph-caption {
+  margin-top: 16px;
+  color: var(--codex-muted);
+  font-size: 14px;
+}
+
+.codex-page .graph-summary {
+  padding: 16px;
+
+  color: #f2cd83;
+  background: rgba(242, 205, 131, 0.06);
+
+  border: 1px solid rgba(242, 205, 131, 0.3);
+  border-radius: 10px;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.codex-page .graph-actions {
+  margin-block: 20px;
+}
+
+.codex-page #graph-c-control[hidden] {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .codex-page .graph-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

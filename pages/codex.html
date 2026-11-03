@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Explore connections between mathematics, quantum physics, waves, geometry, and the cosmos."
+  >
+
+  <title>Mathematical Codex | Beyond the Numbers</title>
+
+  <!-- Order matters: glossary data loads before the interactive features. -->
+<link rel="stylesheet" href="../static/css/codex.css">
+<link rel="stylesheet" href="../static/css/codex-reference.css">
+<link rel="stylesheet" href="../static/css/codex-graph.css">
+<link rel="stylesheet" href="../static/css/header.css">
+
+<script defer src="../js/glossary-data.js"></script>
+<script defer src="../js/glossary.js"></script>
+
+<script defer src="../js/codex-reference-data.js"></script>
+<script defer src="../js/codex-reference.js"></script>
+
+<script defer src="../js/concept-map.js"></script>
+<script defer src="../js/wave-lab.js"></script>
+<script defer src="../js/codex-graph.js"></script>
+</head>
+
+<body class="codex-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Main navigation -->
+<header class="shared-header">
+  <a class="brand" href="home.html">
+    <span aria-hidden="true">✦</span>
+    Beyond the Numbers
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="home.html">Home</a>
+    <a href="basic-math.html">Basic Math</a>
+    <a href="fractions.html">Fractions</a>
+    <a href="patterns.html">Patterns</a>
+    <a href="geometry.html">Geometry</a>
+    <a href="probability.html">Probability</a>
+    <a href="codex.html" aria-current="page">Codex</a>
+  </nav>
+</header>
+  
+
+  <main id="main">
+
+    <!-- Introduction -->
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">
+        Beyond the Numbers / A field guide to discovery
+      </p>
+
+      <h1 id="title">
+        The Mathematical<br>
+        <span>Codex</span>
+      </h1>
+
+      <p class="intro">
+        Every idea is a doorway. Explore the language that connects
+        the smallest particles to the widest reaches of space.
+      </p>
+
+      <a class="primary" href="#glossary">
+        Begin exploring
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <a class="text-link" href="#wave-lab">
+        Try the wave lab ↓
+      </a>
+    </section>
+
+    <!-- Discovery portals -->
+    <section aria-labelledby="portals-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / Choose a constellation</p>
+
+          <h2 id="portals-heading">
+            Four worlds. Countless connections.
+          </h2>
+        </div>
+
+        <p>Select a portal to explore its glossary.</p>
+      </div>
+
+      <div class="portals">
+        <button
+          class="portal quantum"
+          type="button"
+          data-category="quantum"
+        >
+          <span class="portal-art" aria-hidden="true">⚛</span>
+          <span class="portal-number">01 / THE VERY SMALL</span>
+          <strong>Quantum physics</strong>
+          <span>Atoms, particles &amp; probability</span>
+          <span class="portal-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button
+          class="portal waves"
+          type="button"
+          data-category="waves"
+        >
+          <span class="portal-art" aria-hidden="true">∿</span>
+          <span class="portal-number">02 / THE VIBRATING WORLD</span>
+          <strong>Waves &amp; sound</strong>
+          <span>Frequency, harmony &amp; Solfeggio</span>
+          <span class="portal-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button
+          class="portal geometry"
+          type="button"
+          data-category="geometry"
+        >
+          <span class="portal-art" aria-hidden="true">△</span>
+          <span class="portal-number">03 / THE SHAPE OF THINGS</span>
+          <strong>Geometry</strong>
+          <span>Symmetry, circles &amp; patterns</span>
+          <span class="portal-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button
+          class="portal cosmos"
+          type="button"
+          data-category="cosmos"
+        >
+          <span class="portal-art" aria-hidden="true">✧</span>
+          <span class="portal-number">04 / THE GREAT BEYOND</span>
+          <strong>Cosmos</strong>
+          <span>Orbits, gravity &amp; light</span>
+          <span class="portal-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- MATH REFERENCE LIBRARY -->
+<section
+  id="math-reference"
+  class="panel"
+  aria-labelledby="reference-heading"
+>
+  <p class="eyebrow">Your mathematical field guide</p>
+
+<h2 id="reference-heading">Math terms &amp; symbols</h2>
+
+  <p>
+    Search by a word, a symbol, or an example.
+    Open an entry for its meaning and a concrete example.
+    This library spans foundational and more advanced ideas.
+  </p>
+
+
+
+  <p class="reference-note">
+    <strong>Context matters:</strong>
+    A symbol can mean different things in different subjects.
+    For example, |x| means absolute value, while the bar in
+    P(A | B) means “given B.”
+  </p>
+
+  <div class="reference-controls">
+    <label for="reference-search">
+      Search the library
+
+      <input
+        id="reference-search"
+        type="search"
+        placeholder="Try numerator, ≥, derivative, or mean…"
+        autocomplete="off"
+        aria-controls="reference-cards"
+      >
+    </label>
+
+    <label for="reference-subject">
+      Subject
+
+      <select id="reference-subject">
+        <option value="all">All subjects</option>
+      </select>
+    </label>
+
+    <label for="reference-kind">
+      Entry type
+
+      <select id="reference-kind">
+        <option value="all">Terms and symbols</option>
+        <option value="term">Terms</option>
+        <option value="symbol">Symbols</option>
+      </select>
+    </label>
+  </div>
+
+  <button id="reference-reset" class="secondary" type="button">
+    Reset library filters
+  </button>
+
+  <p id="reference-count" role="status" aria-atomic="true"></p>
+
+  <div id="reference-cards" class="reference-cards"></div>
+
+  <nav class="reference-pagination" aria-label="Reference library pages">
+    <button
+      id="reference-previous"
+      class="secondary"
+      type="button"
+      aria-controls="reference-cards"
+    >
+      ← Previous
+    </button>
+
+    <span id="reference-page"></span>
+
+    <button
+      id="reference-next"
+      class="secondary"
+      type="button"
+      aria-controls="reference-cards"
+    >
+      Next →
+    </button>
+  </nav>
+
+  <noscript>
+    <p>Enable JavaScript to browse the reference library.</p>
+  </noscript>
+</section>
+
+    <!-- Searchable glossary -->
+    <section
+      id="glossary"
+      class="panel"
+      aria-labelledby="glossary-heading"
+    >
+      <p class="eyebrow">02 / Build your understanding</p>
+
+      <h2 id="glossary-heading">A universe of ideas</h2>
+
+      <p>
+        Start with a word. Follow its connections.
+        See where curiosity takes you.
+      </p>
+
+      <div class="search-row">
+        <label for="search">
+          Search the Codex
+
+          <input
+            id="search"
+            type="search"
+            placeholder="Try frequency, atom, symmetry…"
+            autocomplete="off"
+            aria-controls="terms"
+          >
+        </label>
+
+        <button id="reset" class="secondary" type="button">
+          Reset filters
+        </button>
+      </div>
+
+      <div
+        id="filters"
+        class="filters"
+        role="group"
+        aria-label="Filter glossary by world"
+      >
+        <button
+          type="button"
+          data-category="all"
+          aria-pressed="true"
+        >
+          All worlds
+        </button>
+
+        <button
+          type="button"
+          data-category="quantum"
+          aria-pressed="false"
+        >
+          Quantum physics
+        </button>
+
+        <button
+          type="button"
+          data-category="waves"
+          aria-pressed="false"
+        >
+          Waves &amp; sound
+        </button>
+
+        <button
+          type="button"
+          data-category="geometry"
+          aria-pressed="false"
+        >
+          Geometry
+        </button>
+
+        <button
+          type="button"
+          data-category="cosmos"
+          aria-pressed="false"
+        >
+          Cosmos
+        </button>
+      </div>
+
+      <p id="result-count" role="status"></p>
+
+      <!-- glossary.js creates the entries here. -->
+      <div id="terms" class="terms"></div>
+
+      <noscript>
+        <p>
+          Enable JavaScript to search the glossary
+          and use the interactive features.
+        </p>
+      </noscript>
+    </section>
+
+    <!-- INTERCONNECTED CONCEPT MAP -->
+<section id="connections" aria-labelledby="map-heading">
+  <p class="eyebrow">Follow a mathematical connection</p>
+
+  <h2 id="map-heading">How does one idea help explain another?</h2>
+
+  <p>
+    Each bubble is an idea. A line means the two ideas
+    are connected—it is not a calculation or a required
+    learning order.
+  </p>
+
+  <label for="map-world">
+    Choose a map
+
+    <select id="map-world">
+      <option value="math">Everyday mathematics</option>
+      <option value="science">Science connections</option>
+    </select>
+  </label>
+
+  <ol class="map-instructions">
+    <li>Select an idea.</li>
+    <li>Look at its highlighted connections.</li>
+    <li>Read the explanation and example beside the map.</li>
+  </ol>
+
+  <div class="map-legend" aria-label="Map legend">
+    <span>
+      <i class="legend-selected" aria-hidden="true"></i>
+      Purple: selected idea
+    </span>
+
+    <span>
+      <i class="legend-connected" aria-hidden="true"></i>
+      Cyan: connected idea or line
+    </span>
+
+    <span>
+      <i class="legend-other" aria-hidden="true"></i>
+      Muted: other ideas
+    </span>
+  </div>
+
+  <div class="map-layout panel">
+    <div
+      id="concept-map"
+      class="concept-map"
+      role="group"
+      aria-label="Select an idea to explore its connections"
+    ></div>
+
+    <div
+      id="map-detail"
+      class="map-detail"
+      aria-live="polite"
+    ></div>
+  </div>
+
+  <p class="reference-note">
+    <strong>Start here:</strong>
+    Select Multiplication, then explore Area.
+    A rectangle with 3 columns and 4 rows contains
+    3 × 4 = 12 square units.
+  </p>
+</section>
+
+  <!-- INTERACTIVE FUNCTION GRAPH -->
+<section
+  id="graph-lab"
+  class="panel"
+  aria-labelledby="graph-heading"
+>
+  <p class="eyebrow">Explore an equation</p>
+
+  <h2 id="graph-heading">Change the equation. Watch the graph.</h2>
+
+  <p>
+    An equation connects inputs and outputs.
+    Change its coefficients, then move a point along the curve
+    to explore how x determines y.
+  </p>
+
+  <div class="graph-layout">
+    <div>
+      <p id="graph-equation" class="graph-equation"></p>
+
+      <svg
+        id="function-graph"
+        viewBox="0 0 480 480"
+        role="img"
+        aria-labelledby="function-graph-title function-graph-description"
+      >
+        <title id="function-graph-title">
+          Interactive coordinate graph
+        </title>
+
+        <desc id="function-graph-description"></desc>
+
+        <defs>
+          <clipPath id="function-graph-clip">
+            <rect x="40" y="20" width="420" height="420"></rect>
+          </clipPath>
+        </defs>
+
+        <g id="graph-grid"></g>
+
+        <g clip-path="url(#function-graph-clip)">
+          <path id="graph-curve"></path>
+
+          <circle
+            id="graph-point"
+            r="6"
+            fill="#f2cd83"
+            stroke="#ffffff"
+            stroke-width="2"
+          ></circle>
+        </g>
+      </svg>
+
+      <p class="graph-caption">
+        Both axes run from −10 to 10.
+        The gold point marks your selected input and output.
+        Portions outside the window are clipped.
+      </p>
+    </div>
+
+    <div>
+      <label for="graph-type">
+        Equation family
+
+        <select id="graph-type">
+          <option value="linear">Linear — y = ax + b</option>
+          <option value="quadratic">Quadratic — y = ax² + bx + c</option>
+        </select>
+      </label>
+
+      <label for="graph-a">
+        <span id="graph-a-label">Slope a</span>
+
+        <output id="graph-a-value" for="graph-a"></output>
+
+        <input
+          id="graph-a"
+          type="range"
+          min="-3"
+          max="3"
+          step="0.25"
+          value="1"
+        >
+      </label>
+
+      <label for="graph-b">
+        <span id="graph-b-label">Vertical intercept b</span>
+
+        <output id="graph-b-value" for="graph-b"></output>
+
+        <input
+          id="graph-b"
+          type="range"
+          min="-10"
+          max="10"
+          step="0.5"
+          value="0"
+        >
+      </label>
+
+      <div id="graph-c-control" hidden>
+        <label for="graph-c">
+          Constant term c
+
+          <output id="graph-c-value" for="graph-c"></output>
+
+          <input
+            id="graph-c"
+            type="range"
+            min="-10"
+            max="10"
+            step="0.5"
+            value="0"
+          >
+        </label>
+      </div>
+
+      <label for="graph-x">
+        Explore an input x
+
+        <output id="graph-x-value" for="graph-x"></output>
+
+        <input
+          id="graph-x"
+          type="range"
+          min="-10"
+          max="10"
+          step="0.5"
+          value="2"
+        >
+      </label>
+
+      <p
+        id="graph-summary"
+        class="graph-summary"
+        role="status"
+        aria-atomic="true"
+      ></p>
+
+      <p id="graph-explanation" class="graph-caption"></p>
+
+      <div class="graph-actions">
+        <button id="graph-reset" class="secondary" type="button">
+          Reset graph
+        </button>
+      </div>
+
+      <p class="graph-caption">
+        <strong>Try this:</strong>
+        In linear mode, set a to 0.
+        What happens to the line?
+        Then try quadratic mode and compare positive
+        and negative values of a.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- Interactive wave and sound lab -->
+    <section
+      id="wave-lab"
+      class="panel lab"
+      aria-labelledby="lab-heading"
+    >
+      <p class="eyebrow">04 / Learn by changing something</p>
+
+      <h2 id="lab-heading">Make a wave. Hear a pattern.</h2>
+
+      <p>
+        Change frequency and amplitude. Watch the model respond,
+        then listen to the tone you created.
+      </p>
+
+      <canvas
+        id="wave-canvas"
+        width="1000"
+        height="250"
+        role="img"
+        aria-label="Sine wave model; frequency controls cycles and amplitude controls height"
+      >
+        A sine wave model appears here in browsers that support canvas.
+      </canvas>
+
+      <div class="lab-controls">
+        <label for="frequency">
+          Frequency
+
+          <output id="frequency-value" for="frequency">
+            220 Hz
+          </output>
+
+          <input
+            id="frequency"
+            type="range"
+            min="80"
+            max="1000"
+            step="1"
+            value="220"
+          >
+        </label>
+
+        <label for="amplitude">
+          Relative amplitude
+
+          <output id="amplitude-value" for="amplitude">
+            35%
+          </output>
+
+          <input
+            id="amplitude"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="35"
+          >
+        </label>
+
+        <label for="preset">
+          Explore a frequency
+
+          <select id="preset">
+            <option value="">Choose a tone…</option>
+            <option value="220">220 Hz — A3</option>
+            <option value="440">440 Hz — A4</option>
+            <option value="396">
+              396 Hz — Solfeggio-associated
+            </option>
+            <option value="528">
+              528 Hz — Solfeggio-associated
+            </option>
+            <option value="639">
+              639 Hz — Solfeggio-associated
+            </option>
+          </select>
+        </label>
+      </div>
+
+      <div class="lab-actions">
+        <button
+          id="play-tone"
+          class="primary"
+          type="button"
+          aria-pressed="false"
+        >
+          Play tone
+        </button>
+
+        <button
+          id="pause-wave"
+          class="secondary"
+          type="button"
+          aria-pressed="false"
+        >
+          Pause animation
+        </button>
+
+        <button
+          id="reset-lab"
+          class="secondary"
+          type="button"
+        >
+          Reset lab
+        </button>
+      </div>
+
+      <p id="lab-status" role="status">
+        Sound is off. Start with a comfortable device volume.
+      </p>
+
+      <div class="lab-notes">
+        <p>
+          <strong>What am I seeing?</strong>
+          A sine wave over a 0.01-second window. More cycles in
+          the same time means a higher frequency. A taller wave
+          means a larger amplitude. The animation moves slowly
+          to make the pattern easier to see.
+        </p>
+
+        <p>
+          <strong>Try this:</strong>
+          Compare 220 Hz and 440 Hz. Doubling frequency raises
+          the pitch by one octave. Amplitude affects the signal
+          strength; perceived loudness also depends on your
+          hearing and speakers.
+        </p>
+
+        <p>
+          <strong>About Solfeggio:</strong>
+          These presets let you compare tones associated with
+          modern Solfeggio practices. They do not demonstrate
+          claims about healing or special biological effects.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Beyond the Numbers</span>
+    <span aria-hidden="true">✦</span>
+    <span>Keep asking. Keep connecting.</span>
+    <a href="#title">Back to the stars ↑</a>
+  </footer>
+</body>
+</html>

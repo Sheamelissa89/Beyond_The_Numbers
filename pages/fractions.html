@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Build fractions, discover equivalent fractions, and practice through interactive exploration."
+  >
+
+  <title>Fractions | Beyond the Numbers</title>
+
+  <link rel="stylesheet" href="../static/css/fractions.css">
+  <link rel="stylesheet" href="../static/css/header.css">
+
+  <script defer src="../js/fractions.js"></script>
+  <script defer src="../js/fractions-practice.js"></script>
+  <script defer src="../js/fractions-products.js"></script>
+
+</head>
+
+<body class="fractions-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- MAIN NAVIGATION -->
+  <header class="shared-header">
+    <a class="brand" href="home.html">
+      <span aria-hidden="true">✦</span>
+      Beyond the Numbers
+    </a>
+
+    <nav aria-label="Main navigation">
+  <a href="home.html">Home</a>
+  <a href="basic-math.html">Basic Math</a>
+  <a href="fractions.html" aria-current="page">Fractions</a>
+  <a href="patterns.html">Patterns</a>
+  <a href="geometry.html">Geometry</a>
+  <a href="probability.html">Probability</a>
+  <a href="codex.html">Codex</a>
+</nav>
+  </header>
+
+  <main id="main">
+
+    <!-- INTRODUCTION -->
+    <section class="hero" aria-labelledby="page-heading">
+      <p class="eyebrow">The fraction constellation</p>
+
+      <h1 id="page-heading">
+        Small parts.<br>
+        <span>Whole new discoveries.</span>
+      </h1>
+
+      <p class="intro">
+        A fraction tells us how much of a whole we have.
+        Build one, change its pieces, and discover how different
+        fractions can describe the same amount.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary" href="#builder">Build a fraction ↗</a>
+        <a class="secondary" href="#practice">Try a challenge</a>
+      </div>
+    </section>
+
+    <!-- SHORT EXPLANATIONS -->
+    <section aria-labelledby="basics-heading">
+      <p class="eyebrow">01 / Meet the parts</p>
+
+      <h2 id="basics-heading">Two numbers. One relationship.</h2>
+
+      <div class="explanation-grid">
+        <article class="panel">
+          <h3>The numerator</h3>
+
+          <p>
+            The top number counts the parts we are considering.
+            In <strong>3/4</strong>, the numerator is
+            <strong>3</strong>.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h3>The denominator</h3>
+
+          <p>
+            The bottom number tells us how many equal parts
+            make one whole. In <strong>3/4</strong>, the
+            denominator is <strong>4</strong>.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h3>Equal parts matter</h3>
+
+          <p>
+            Fourths must be equal portions of the same whole.
+            Three fourths means three of those four equal parts.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FRACTION BUILDER -->
+    <section
+      id="builder"
+      class="panel lab"
+      aria-labelledby="builder-heading"
+    >
+      <p class="eyebrow">02 / Explore</p>
+
+      <h2 id="builder-heading">Build a fraction</h2>
+
+      <p id="builder-help">
+        Choose how many equal parts make one whole.
+        Then select the pieces you want to include.
+        Select a piece again to turn it off.
+      </p>
+
+      <div class="control-row">
+        <label for="denominator">
+          Equal parts in one whole
+
+          <select id="denominator">
+            <option value="2">2 — halves</option>
+            <option value="3">3 — thirds</option>
+            <option value="4" selected>4 — fourths</option>
+            <option value="5">5 — fifths</option>
+            <option value="6">6 — sixths</option>
+            <option value="8">8 — eighths</option>
+            <option value="10">10 — tenths</option>
+            <option value="12">12 — twelfths</option>
+          </select>
+        </label>
+
+        <button id="clear-parts" class="secondary" type="button">
+          Clear pieces
+        </button>
+
+        <button id="fill-parts" class="secondary" type="button">
+          Select the whole
+        </button>
+      </div>
+
+      <!-- JavaScript creates equal-sized piece buttons here. -->
+      <div
+        id="fraction-pieces"
+        class="fraction-pieces"
+        role="group"
+        aria-label="Select equal parts of one whole"
+        aria-describedby="builder-help"
+      ></div>
+
+      <div
+        id="builder-summary"
+        class="fraction-summary"
+        role="status"
+        aria-atomic="true"
+      >
+        <p class="fraction-readout">
+          <span id="numerator-value">0</span>
+          <span aria-hidden="true">/</span>
+          <span class="sr-only">out of</span>
+          <span id="denominator-value">4</span>
+        </p>
+
+        <p id="fraction-description">
+          No parts selected. Your fraction is 0/4.
+        </p>
+
+        <p id="fraction-conversions">
+          Decimal: 0 · Percentage: 0%
+        </p>
+      </div>
+
+      <p class="discovery-note">
+        <strong>Try this:</strong>
+        Select two of four pieces. Then explore why
+        2/4 represents the same amount as 1/2.
+      </p>
+    </section>
+
+    <!-- EQUIVALENT FRACTIONS -->
+    <section
+      id="equivalence"
+      class="panel lab"
+      aria-labelledby="equivalence-heading"
+    >
+      <p class="eyebrow">03 / Make a connection</p>
+
+      <h2 id="equivalence-heading">
+        Different pieces. Same amount.
+      </h2>
+
+      <p>
+        This model follows the fraction you built above.
+        Multiply its numerator and denominator by the same
+        positive whole number to make an equivalent fraction.
+      </p>
+
+      <label for="equivalence-factor">
+        Split each original piece into
+        <output id="factor-value" for="equivalence-factor">
+          2
+        </output>
+        smaller equal pieces
+
+        <input
+          id="equivalence-factor"
+          type="range"
+          min="1"
+          max="4"
+          step="1"
+          value="2"
+        >
+      </label>
+
+      <div
+        id="equivalence-model"
+        class="equivalence-model"
+        role="group"
+        aria-label="Compare original and equivalent fractions"
+      >
+        <div class="model-row">
+          <p id="original-label">Original: 0/4</p>
+
+          <div
+            id="original-bar"
+            class="fraction-bar"
+            role="img"
+            aria-label="Zero of four equal parts selected"
+          ></div>
+        </div>
+
+        <div class="model-row">
+          <p id="equivalent-label">Equivalent: 0/8</p>
+
+          <div
+            id="equivalent-bar"
+            class="fraction-bar"
+            role="img"
+            aria-label="Zero of eight equal parts selected"
+          ></div>
+        </div>
+      </div>
+
+      <p
+        id="equivalence-explanation"
+        class="discovery-note"
+        role="status"
+        aria-atomic="true"
+      >
+        0/4 = 0/8. The pieces get smaller, but the selected
+        amount stays the same.
+      </p>
+
+      <p>
+        <strong>Why does it work?</strong>
+        We divide the same whole into more pieces.
+        Both bars represent an equally sized whole.
+      </p>
+    </section>
+
+    <!-- PRACTICE -->
+    <section
+      id="practice"
+      class="panel lab"
+      aria-labelledby="practice-heading"
+    >
+      <p class="eyebrow">04 / Test a discovery</p>
+
+      <h2 id="practice-heading">Name the fraction</h2>
+
+      <p id="practice-help">
+        Count the highlighted pieces for the numerator.
+        Count all the equal pieces for the denominator.
+      </p>
+
+      <div
+        id="practice-model"
+        class="fraction-bar practice-model"
+        role="img"
+        aria-label="A fraction model will appear when the activity loads"
+      ></div>
+
+      <form id="fraction-practice-form" novalidate>
+        <fieldset>
+          <legend>What fraction is highlighted?</legend>
+
+          <div class="answer-fields">
+            <label for="answer-numerator">
+              Numerator
+
+              <input
+                id="answer-numerator"
+                name="numerator"
+                type="number"
+                min="0"
+                max="12"
+                step="1"
+                inputmode="numeric"
+                autocomplete="off"
+                aria-describedby="practice-help practice-feedback"
+                required
+              >
+            </label>
+
+            <span class="answer-divider" aria-hidden="true">/</span>
+
+            <label for="answer-denominator">
+              Denominator
+
+              <input
+                id="answer-denominator"
+                name="denominator"
+                type="number"
+                min="1"
+                max="12"
+                step="1"
+                inputmode="numeric"
+                autocomplete="off"
+                aria-describedby="practice-help practice-feedback"
+                required
+              >
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="practice-actions">
+          <button class="primary" type="submit">
+            Check answer
+          </button>
+
+          <button id="fraction-hint" class="secondary" type="button">
+            Give me a hint
+          </button>
+
+          <button
+            id="next-fraction"
+            class="secondary"
+            type="button"
+          >
+            Next challenge
+          </button>
+        </div>
+
+        <p
+          id="practice-feedback"
+          role="status"
+          aria-atomic="true"
+        ></p>
+      </form>
+    </section>
+
+    <!-- FRACTION OPERATIONS -->
+<section aria-labelledby="fraction-operations-heading">
+  <p class="eyebrow">05 / Explore relationships</p>
+
+  <h2 id="fraction-operations-heading">
+  Five ways to explore fractions.
+  </h2>
+
+  <p>
+    These models use equally sized wholes.
+    Explore each activity separately and ask for an
+    explanation whenever you need one.
+  </p>
+
+  <nav class="fraction-activity-links" aria-label="Fraction activities">
+    <a class="secondary" href="#compare-fractions">Compare</a>
+    <a class="secondary" href="#add-fractions">Add</a>
+    <a class="secondary" href="#subtract-fractions">Subtract</a>
+    <a class="secondary" href="#multiply-fractions">Multiply</a>
+    <a class="secondary" href="#divide-fractions">Divide</a>
+  </nav>
+
+  <div class="fraction-labs">
+    <article
+      id="compare-fractions"
+      class="panel fraction-operation"
+      data-fraction-operation="compare"
+      aria-labelledby="compare-fractions-heading"
+    >
+      <p class="operation-symbol" aria-hidden="true">≶</p>
+
+      <h3 id="compare-fractions-heading">Compare fractions</h3>
+
+      <p>
+        Which amount is greater? Compare the highlighted
+        portions of two equally sized wholes.
+      </p>
+
+      <p class="discovery-note">
+        A larger denominator means smaller individual pieces,
+        not automatically a larger fraction.
+      </p>
+
+      <div class="fraction-operation-mount"></div>
+    </article>
+
+    <article
+      id="add-fractions"
+      class="panel fraction-operation"
+      data-fraction-operation="add"
+      aria-labelledby="add-fractions-heading"
+    >
+      <p class="operation-symbol" aria-hidden="true">+</p>
+
+      <h3 id="add-fractions-heading">Add fractions</h3>
+
+      <p>
+        Combine portions with matching denominators.
+        These challenges keep the total at one whole or less.
+      </p>
+
+      <p class="discovery-note">
+        Add the numerators. Keep the denominator because
+        the size of each piece stays the same.
+      </p>
+
+      <div class="fraction-operation-mount"></div>
+    </article>
+
+    <article
+      id="subtract-fractions"
+      class="panel fraction-operation"
+      data-fraction-operation="subtract"
+      aria-labelledby="subtract-fractions-heading"
+    >
+      <p class="operation-symbol" aria-hidden="true">−</p>
+
+      <h3 id="subtract-fractions-heading">Subtract fractions</h3>
+
+      <p>
+        Take one portion away from another.
+        These challenges use matching denominators and
+        answers of zero or more.
+      </p>
+
+      <p class="discovery-note">
+        Subtract the numerators. Keep the denominator
+        because you are still counting the same-sized pieces.
+      </p>
+
+      <div class="fraction-operation-mount"></div>
+    </article>
+
+    <!-- MULTIPLICATION -->
+<article
+  id="multiply-fractions"
+  class="panel fraction-operation"
+  data-fraction-product="multiply"
+  aria-labelledby="multiply-fractions-heading"
+>
+  <p class="operation-symbol" aria-hidden="true">×</p>
+
+  <h3 id="multiply-fractions-heading">Multiply fractions</h3>
+
+  <p>
+    Find a fraction of another fraction.
+    The model divides one whole into rows and columns.
+    The golden overlap shows the product.
+  </p>
+
+  <p class="discovery-note">
+    Multiply the numerators together.
+    Multiply the denominators together.
+    For example, 1/2 of 1/3 is 1/6.
+  </p>
+
+  <div class="fraction-product-mount"></div>
+</article>
+
+<!-- DIVISION -->
+<article
+  id="divide-fractions"
+  class="panel fraction-operation"
+  data-fraction-product="divide"
+  aria-labelledby="divide-fractions-heading"
+>
+  <p class="operation-symbol" aria-hidden="true">÷</p>
+
+  <h3 id="divide-fractions-heading">Divide fractions</h3>
+
+  <p>
+    Discover how many portions of one size fit inside
+    another amount. These challenges begin with
+    matching denominators.
+  </p>
+
+  <p class="discovery-note">
+    For example, 3/4 ÷ 1/4 asks how many quarter-sized
+    portions fit inside three quarters. The answer is 3.
+    Some challenges include part of a portion.
+  </p>
+
+  <div class="fraction-product-mount"></div>
+</article>
+
+  </div>
+</section>
+
+    <!-- CONNECTIONS -->
+    <section class="panel" aria-labelledby="connections-heading">
+      <p class="eyebrow">06 / Keep exploring</p>
+
+      <h2 id="connections-heading">
+        Fractions reach beyond this page.
+      </h2>
+
+      <p>
+        Fractions connect to division, ratios, probability,
+        measurement, and geometry. Each connection gives
+        you another way to understand a part of a whole.
+      </p>
+
+      <div class="connection-links">
+        <a class="secondary" href="basic-math.html">
+          Explore division
+        </a>
+
+        <a class="secondary" href="probability.html">
+          Explore probability
+        </a>
+
+        <a class="secondary" href="codex.html">
+          Visit the Codex
+        </a>
+      </div>
+    </section>
+
+    <noscript>
+      <p class="panel">
+        Enable JavaScript to use the fraction builder,
+        equivalent-fraction models, and practice activity.
+      </p>
+    </noscript>
+  </main>
+
+  <footer>
+    <p>Beyond the Numbers — Discover how the pieces connect.</p>
+    <a href="#page-heading">Back to the stars ↑</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* ==========================================================
+   SHARED NAVIGATION — FLOATING RIGHT-SIDE BUBBLES
+   Uses the existing header and navigation links.
+   ========================================================== */
+
+
+/* Leave room for the desktop navigation */
+
+body {
+  padding-right: 180px;
+}
+
+
+/* Site name across the top */
+
+body > header {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  width: calc(100% - 36px);
+  max-width: 1200px;
+  min-height: 76px;
+
+  margin: 0 auto;
+  padding: 20px 24px;
+
+  color: #f5f1ff;
+  background: rgba(8, 12, 30, 0.78);
+
+  border: 1px solid rgba(200, 185, 255, 0.18);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+body > header > a,
+body > header > a.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  color: #f5f1ff;
+  background: transparent;
+  border: 0;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: normal;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+
+/* Floating navigation rail */
+
+body > header > nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+
+  width: 144px;
+  max-height: calc(100dvh - 32px);
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+
+  transform: translateY(-50%);
+}
+
+
+/* Individual bubble links */
+
+body > header > nav > a {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 14px;
+
+  color: #f5f1ff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(77, 61, 121, 0.96),
+      rgba(16, 23, 49, 0.97)
+    );
+
+  border: 1px solid rgba(210, 192, 255, 0.48);
+  border-radius: 999px;
+
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: normal;
+
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  white-space: nowrap;
+
+  /*
+   * A darker shadow below gives each bubble a floating feel.
+   * The inset highlight adds a softly rounded surface.
+   */
+  box-shadow:
+    0 7px 0 rgba(3, 7, 20, 0.55),
+    0 12px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+/* Hover and keyboard focus */
+
+body > header > nav > a:hover {
+  color: #ffffff;
+  border-color: #b8eeee;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 0 rgba(3, 7, 20, 0.5),
+    0 16px 24px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(139, 227, 229, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+body > header a:focus-visible {
+  outline: 3px solid #8be3e5;
+  outline-offset: 4px;
+}
+
+
+/* Current page */
+
+body > header > nav > a[aria-current="page"] {
+  color: #17132b;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e4d9ff,
+      #baa0f5
+    );
+
+  border-color: #eee6ff;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow:
+    0 7px 0 rgba(30, 18, 58, 0.7),
+    0 12px 22px rgba(0, 0, 0, 0.4),
+    0 0 22px rgba(197, 176, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+body > header > nav > a:active {
+  transform: translateY(2px);
+}
+
+
+/* Smaller screens: place bubbles above the page content.
+   This keeps them from covering activities or text. */
+
+@media (max-width: 900px) {
+  body {
+    padding-right: 0;
+  }
+
+  body > header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 18px;
+  }
+
+  body > header > nav {
+    position: static;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px 10px;
+
+    width: 100%;
+    max-height: none;
+    padding: 4px 0 10px;
+    overflow: visible;
+
+    transform: none;
+  }
+
+  body > header > nav > a {
+    flex: 0 1 auto;
+
+    width: auto;
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+}
+
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  body > header > nav > a {
+    transition: none;
+  }
+
+  body > header > nav > a:hover,
+  body > header > nav > a:active {
+    transform: none;
+  }
+}
+
+/* Center the site name on every page */
+body > header > a,
+body > header > a.brand {
+  margin-inline: auto;
+  justify-content: center;
+  text-align: center;
+}

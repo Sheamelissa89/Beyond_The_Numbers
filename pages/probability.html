@@ -2,76 +2,319 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <meta
     name="description"
-    content="Explore chance, possible outcomes, and the patterns hidden in uncertainty."
+    content="Experiment with coin flips, dice rolls, and a customizable marble bag to explore probability."
   >
+
   <title>Probability | Beyond the Numbers</title>
 
   <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../js/main.js" defer></script>
+  <link rel="stylesheet" href="../static/css/probability.css">
+  <link rel="stylesheet" href="../static/css/header.css">
+
+  <script defer src="../js/probability.js"></script>
 </head>
+
 <body class="probability-page">
-  <header>
-    <a href="../index.html">Beyond the Numbers</a>
+  <header class="shared-header">
+    <a class="brand" href="home.html">Beyond the Numbers</a>
 
     <nav aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="basic-math.html">Basic Math</a>
+      <a href="fractions.html">Fractions</a>
       <a href="patterns.html">Patterns</a>
       <a href="geometry.html">Geometry</a>
       <a href="probability.html" aria-current="page">Probability</a>
+      <a href="codex.html">Codex</a>
     </nav>
   </header>
 
   <main>
-     <section aria-labelledby="page-heading">
+    <section aria-labelledby="page-heading">
       <p>Make room for the unexpected.</p>
+
       <h1 id="page-heading">What are the chances?</h1>
+
       <p>
-        A coin flips. A die rolls. Something unexpected happens.
-        Explore how math helps us understand a world of possibilities.
+        Predict an outcome. Run an experiment.
+        Discover how individual surprises can create
+        patterns across many trials.
       </p>
-      <a href="#discover">Discover probability</a>
+
+      <div class="probability-actions">
+        <a href="#coin-lab">Flip coins</a>
+        <a href="#dice-lab">Roll dice</a>
+        <a href="#bag-lab">Build a marble bag</a>
+      </div>
     </section>
 
-    <section id="discover" class="discovery-grid"
-             aria-labelledby="discover-heading">
-      <h2 id="discover-heading">Where will you start?</h2>
+    <!-- INTRODUCTION -->
+    <section class="probability-panel" aria-labelledby="ideas-heading">
+      <p class="probability-eyebrow">Before you experiment</p>
 
-      <article>
-        <h3>Chance and outcomes</h3>
-        <p>
-          Explore what could happen, compare possibilities,
-          and discover what makes an outcome more or less likely.
-        </p>
-      </article>
+      <h2 id="ideas-heading">Expected does not mean guaranteed.</h2>
 
-      <article>
-        <h3>Patterns in randomness</h3>
-        <p>
-          Investigate how unpredictable individual events
-          can reveal patterns over many repetitions.
-        </p>
-      </article>
+      <div class="probability-intro">
+        <div>
+          <h3>Theoretical probability</h3>
+          <p>
+            What the model predicts. A fair coin has two
+            equally likely outcomes, so the probability
+            of heads is 1/2, or 50%.
+          </p>
+        </div>
 
-      <article>
-        <h3>Test your predictions</h3>
-        <p>
-          A future experiment space for flipping coins,
-          rolling dice, and comparing predictions with results.
-        </p>
-      </article>
+        <div>
+          <h3>Observed frequency</h3>
+          <p>
+            What happened in your experiment.
+            Divide the number of times an outcome occurred
+            by the total number of trials.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="connection-panel" aria-labelledby="connection-heading">
+    <!-- COIN LAB -->
+    <section
+      id="coin-lab"
+      class="probability-panel"
+      aria-labelledby="coin-heading"
+    >
+      <p class="probability-eyebrow">01 / Two possible outcomes</p>
+
+      <h2 id="coin-heading">The coin observatory</h2>
+
+      <p>
+        Before you begin, predict how many heads you might
+        see in ten flips. Then try a larger experiment.
+      </p>
+
+      <div id="coin-display" class="chance-display" aria-hidden="true">
+        ?
+      </div>
+
+      <div class="probability-actions">
+        <button type="button" data-coin-trials="1">Flip once</button>
+        <button type="button" data-coin-trials="10">Flip 10</button>
+        <button type="button" data-coin-trials="100">Flip 100</button>
+        <button type="button" data-coin-trials="1000">Flip 1,000</button>
+        <button type="button" id="coin-reset">Reset</button>
+      </div>
+
+      <p id="coin-total" class="trial-total"></p>
+
+      <ul id="coin-results" class="chance-results"></ul>
+
+      <p
+        id="coin-status"
+        class="probability-feedback"
+        role="status"
+        aria-atomic="true"
+      ></p>
+
+      <p class="probability-note">
+        <strong>Think about it:</strong>
+        Several heads in a row do not make tails “due.”
+        In this fair-coin model, the next flip still has
+        a 50% chance of heads.
+      </p>
+    </section>
+
+    <!-- DICE LAB -->
+    <section
+      id="dice-lab"
+      class="probability-panel"
+      aria-labelledby="dice-heading"
+    >
+      <p class="probability-eyebrow">02 / Outcomes and events</p>
+
+      <h2 id="dice-heading">The dice laboratory</h2>
+
+      <p>
+        Each face of this fair six-sided die has probability
+        1/6. An event can include more than one face.
+      </p>
+
+      <label for="dice-event">
+        Which event are you investigating?
+
+        <select id="dice-event">
+          <option value="six">Rolling a 6</option>
+          <option value="even">Rolling an even number</option>
+          <option value="high">Rolling greater than 4</option>
+        </select>
+      </label>
+
+      <p id="dice-event-theory" class="probability-note"></p>
+
+      <div id="dice-display" class="chance-display" aria-hidden="true">
+        ?
+      </div>
+
+      <div class="probability-actions">
+        <button type="button" data-dice-trials="1">Roll once</button>
+        <button type="button" data-dice-trials="10">Roll 10</button>
+        <button type="button" data-dice-trials="100">Roll 100</button>
+        <button type="button" data-dice-trials="1000">Roll 1,000</button>
+        <button type="button" id="dice-reset">Reset</button>
+      </div>
+
+      <p id="dice-total" class="trial-total"></p>
+
+      <ul id="dice-results" class="chance-results"></ul>
+
+      <p
+        id="dice-status"
+        class="probability-feedback"
+        role="status"
+        aria-atomic="true"
+      ></p>
+
+      <p class="probability-note">
+        Changing the event reexamines your existing rolls.
+        It does not erase them.
+      </p>
+    </section>
+
+    <!-- MARBLE BAG -->
+    <section
+      id="bag-lab"
+      class="probability-panel"
+      aria-labelledby="bag-heading"
+    >
+      <p class="probability-eyebrow">03 / Change the possibilities</p>
+
+      <h2 id="bag-heading">The cosmic marble bag</h2>
+
+      <p>
+        Build a bag of colored marbles.
+        Every marble is equally likely to be selected.
+        After each draw, it goes back into the bag.
+      </p>
+
+      <div class="bag-controls">
+        <label for="marbles-cyan">
+          Cyan marbles
+          <output id="marbles-cyan-value" for="marbles-cyan">3</output>
+
+          <input
+            id="marbles-cyan"
+            type="range"
+            min="0"
+            max="10"
+            step="1"
+            value="3"
+          >
+        </label>
+
+        <label for="marbles-gold">
+          Gold marbles
+          <output id="marbles-gold-value" for="marbles-gold">2</output>
+
+          <input
+            id="marbles-gold"
+            type="range"
+            min="0"
+            max="10"
+            step="1"
+            value="2"
+          >
+        </label>
+
+        <label for="marbles-violet">
+          Violet marbles
+          <output id="marbles-violet-value" for="marbles-violet">1</output>
+
+          <input
+            id="marbles-violet"
+            type="range"
+            min="0"
+            max="10"
+            step="1"
+            value="1"
+          >
+        </label>
+      </div>
+
+      <div
+        id="marble-preview"
+        class="marble-preview"
+        role="img"
+        aria-label="Contents of the marble bag"
+      ></div>
+
+      <p class="probability-note">
+        Changing the contents starts a new experiment,
+        because the probabilities have changed.
+      </p>
+
+      <div class="probability-actions">
+        <button type="button" data-bag-trials="1">Draw once</button>
+        <button type="button" data-bag-trials="10">Draw 10</button>
+        <button type="button" data-bag-trials="100">Draw 100</button>
+        <button type="button" data-bag-trials="1000">Draw 1,000</button>
+        <button type="button" id="bag-reset">Reset results</button>
+      </div>
+
+      <p id="bag-total" class="trial-total"></p>
+
+      <ul id="bag-results" class="chance-results"></ul>
+
+      <p
+        id="bag-status"
+        class="probability-feedback"
+        role="status"
+        aria-atomic="true"
+      ></p>
+
+      <p>
+        <strong>Try this:</strong>
+        Make cyan half of the marbles. Does it appear on
+        exactly half of every set of ten draws?
+        Compare that with a thousand draws.
+      </p>
+    </section>
+
+    <section
+      class="connection-panel"
+      aria-labelledby="connection-heading"
+    >
       <h2 id="connection-heading">Beyond this subject</h2>
+
       <p>
-        Can we predict a group’s behavior when individual events
-        are uncertain? In Beyond the Elements, we’ll connect
-        probability to radioactive decay and half-life.
+        Probability connects fractions, ratios, and patterns.
+        Larger experiments can produce more stable proportions,
+        but results do not have to move closer to the prediction
+        after every trial.
       </p>
-      <p class="connection-note">A future bridge to Beyond the Elements.</p>
+
+      <div class="probability-actions">
+        <a href="fractions.html">Fractions</a>
+        <a href="patterns.html">Patterns</a>
+        <a href="codex.html">Mathematical Codex</a>
+      </div>
+
+      <p class="connection-note">
+        A future bridge to Beyond the Elements will explore
+        probability in radioactive decay and half-life.
+      </p>
     </section>
+
+    <noscript>
+      <p>
+        Enable JavaScript to run the coin, dice,
+        and marble-bag experiments.
+      </p>
+    </noscript>
   </main>
 
   <footer>

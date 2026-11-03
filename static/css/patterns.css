@@ -1,0 +1,309 @@
+/* ==========================================================
+   PATTERNS — INTERACTIVE LABS
+   Shared page background comes from style.css.
+   Shared navigation comes from header.css.
+   ========================================================== */
+
+.patterns-page .pattern-panel {
+  min-width: 0;
+  margin-bottom: 40px;
+  padding: 30px;
+
+  color: #f5f1ff;
+  background: rgba(8, 15, 35, 0.95);
+
+  border: 1px solid rgba(197, 176, 255, 0.3);
+  border-radius: 20px;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  scroll-margin-top: 24px;
+}
+
+.patterns-page .pattern-panel h2 {
+  margin-top: 0;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.2;
+}
+
+.patterns-page .pattern-panel p {
+  color: #cbd0e5;
+  text-shadow: none;
+}
+
+.patterns-page .pattern-panel .pattern-eyebrow {
+  color: #f2cd83;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.patterns-page .pattern-links,
+.patterns-page .pattern-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 22px;
+}
+
+.patterns-page .pattern-links a,
+.patterns-page .pattern-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 10px 16px;
+
+  color: #f5f1ff;
+  background: #282343;
+
+  border: 1px solid #9b8bbd;
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.patterns-page .pattern-actions button[type="submit"] {
+  color: #19142a;
+  background: #c5b0ff;
+}
+
+.patterns-page .pattern-links a:hover,
+.patterns-page .pattern-actions button:hover {
+  border-color: #8be3e5;
+  filter: brightness(1.15);
+}
+
+.patterns-page .pattern-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-block: 24px;
+}
+
+.patterns-page .shape-controls {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.patterns-page .pattern-panel label {
+  display: block;
+  color: #e0dced;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.patterns-page .pattern-panel input[type="number"],
+.patterns-page .pattern-panel select {
+  box-sizing: border-box;
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  margin-top: 8px;
+  padding: 10px 12px;
+
+  color: #f5f1ff;
+  background: #080f25;
+
+  border: 1px solid #8992b5;
+  border-radius: 9px;
+
+  font: inherit;
+}
+
+.patterns-page #sequence-form > label {
+  max-width: 360px;
+}
+
+.patterns-page .pattern-panel input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  margin-block: 12px 24px;
+  accent-color: #8be3e5;
+}
+
+.patterns-page .pattern-panel output {
+  margin-left: 8px;
+  color: #8be3e5;
+  font-variant-numeric: tabular-nums;
+}
+
+.patterns-page .pattern-panel input[aria-invalid="true"] {
+  border-color: #ffb5bd;
+}
+
+.patterns-page .pattern-links a:focus-visible,
+.patterns-page .pattern-panel button:focus-visible,
+.patterns-page .pattern-panel input:focus-visible,
+.patterns-page .pattern-panel select:focus-visible {
+  outline: 3px solid #8be3e5;
+  outline-offset: 4px;
+}
+
+/* Number sequence */
+
+.patterns-page .sequence-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin: 24px 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.patterns-page .sequence-values li {
+  display: grid;
+  place-items: center;
+
+  min-width: 70px;
+  min-height: 70px;
+  padding: 12px;
+
+  color: #f2cd83;
+  background: #141d38;
+
+  border: 1px solid #8a7da6;
+  border-radius: 14px;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.patterns-page .pattern-panel .pattern-feedback {
+  min-height: 3em;
+  margin-top: 18px;
+}
+
+.patterns-page .pattern-panel .pattern-feedback[data-state="correct"] {
+  color: #9debd2;
+}
+
+.patterns-page .pattern-panel .pattern-feedback[data-state="retry"] {
+  color: #ffdaad;
+}
+
+.patterns-page .pattern-note {
+  padding-left: 16px;
+  border-left: 3px solid #f2cd83;
+}
+
+/* Repeating shapes */
+
+.patterns-page .pattern-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-block: 24px;
+}
+
+.patterns-page .pattern-unit {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+
+  background: #0b1229;
+  border: 1px dashed #8c81ab;
+  border-radius: 12px;
+}
+
+.patterns-page .pattern-tile {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 46px;
+
+  background: #1c2743;
+  border-radius: 8px;
+
+  font-size: 28px;
+  line-height: 1;
+}
+
+.patterns-page .pattern-tile[data-shape="star"] {
+  color: #f2cd83;
+}
+
+.patterns-page .pattern-tile[data-shape="circle"] {
+  color: #8be3e5;
+}
+
+.patterns-page .pattern-tile[data-shape="triangle"] {
+  color: #c5b0ff;
+}
+
+.patterns-page .pattern-tile[data-shape="diamond"] {
+  color: #f2b3d8;
+}
+
+/* Spiral explorer */
+
+.patterns-page .spiral-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.patterns-page #spiral-model {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+
+  background:
+    radial-gradient(circle, #18233d, #060b1c 75%);
+
+  border: 1px solid #6b7393;
+  border-radius: 50%;
+}
+
+@media (max-width: 1000px) {
+  .patterns-page .pattern-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .patterns-page .shape-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .patterns-page .spiral-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .patterns-page .pattern-panel {
+    padding: 20px;
+  }
+
+  .patterns-page .sequence-values li {
+    min-width: 56px;
+    min-height: 56px;
+    font-size: 20px;
+  }
+
+  .patterns-page .pattern-actions button {
+    flex: 1 1 120px;
+  }
+
+  .patterns-page .pattern-unit {
+    padding: 7px;
+  }
+
+  .patterns-page .pattern-tile {
+    width: 36px;
+  }
+}

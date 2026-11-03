@@ -1,0 +1,281 @@
+/* ==========================================================
+   GEOMETRY — INTERACTIVE LABORATORIES
+
+   Background and general layout: style.css
+   Shared navigation bubbles: header.css
+   ========================================================== */
+
+.geometry-page .geometry-panel {
+  min-width: 0;
+  margin-bottom: 40px;
+  padding: 30px;
+
+  color: #f5f1ff;
+  background: rgba(8, 15, 35, 0.95);
+
+  border: 1px solid rgba(139, 227, 229, 0.3);
+  border-radius: 20px;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  scroll-margin-top: 24px;
+}
+
+.geometry-page .geometry-panel h2 {
+  margin-top: 0;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.2;
+}
+
+.geometry-page .geometry-panel p {
+  color: #cbd0e5;
+  text-shadow: none;
+}
+
+.geometry-page .geometry-panel .geometry-eyebrow {
+  color: #8be3e5;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.geometry-page .geometry-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 30px;
+
+  margin-top: 24px;
+}
+
+.geometry-page .geometry-layout > * {
+  min-width: 0;
+}
+
+.geometry-page .geometry-model {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+
+  background:
+    radial-gradient(circle at center, #172942, #060c1d);
+
+  border: 1px solid #66799a;
+  border-radius: 16px;
+}
+
+/* Controls and navigation links */
+
+.geometry-page .geometry-panel label {
+  display: block;
+  color: #e0dced;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.geometry-page .geometry-panel output {
+  margin-left: 10px;
+  color: #8be3e5;
+  font-variant-numeric: tabular-nums;
+}
+
+.geometry-page .geometry-panel input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  margin-block: 12px 24px;
+  accent-color: #8be3e5;
+}
+
+.geometry-page .geometry-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-block: 22px;
+}
+
+.geometry-page .geometry-actions a,
+.geometry-page .geometry-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 10px 16px;
+
+  color: #f5f1ff;
+  background: #20354a;
+
+  border: 1px solid #7ab4bc;
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.geometry-page .geometry-actions a:hover,
+.geometry-page .geometry-actions button:hover {
+  background: #2d4860;
+  border-color: #b1f6ed;
+}
+
+.geometry-page .geometry-actions a:focus-visible,
+.geometry-page .geometry-panel button:focus-visible,
+.geometry-page .geometry-panel input:focus-visible {
+  outline: 3px solid #f2cd83;
+  outline-offset: 4px;
+}
+
+/* Measurements */
+
+.geometry-page .geometry-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  margin-block: 20px;
+}
+
+.geometry-page .geometry-results > div {
+  padding: 16px;
+
+  background: #111d34;
+  border: 1px solid #5d7a90;
+  border-radius: 12px;
+}
+
+.geometry-page .geometry-results dt {
+  color: #cbd0e5;
+  font-size: 14px;
+}
+
+.geometry-page .geometry-results dd {
+  margin: 8px 0 0;
+
+  color: #f2cd83;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.geometry-page .geometry-note {
+  padding-left: 16px;
+  border-left: 3px solid #f2cd83;
+}
+
+.geometry-page .geometry-panel .geometry-big-value {
+  margin-block: 20px;
+  color: #f2cd83;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.geometry-page .angle-arc {
+  fill: none;
+  stroke: #c5b0ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* Symmetry studio */
+
+.geometry-page .symmetry-grid {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  padding: 8px;
+
+  background: #071021;
+  border: 1px solid #66799a;
+  border-radius: 12px;
+}
+
+.geometry-page .symmetry-grid::after {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+
+  width: 2px;
+  background: #f2cd83;
+
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.geometry-page .symmetry-tile {
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+
+  color: #12253a;
+  background: #172741;
+
+  border: 1px solid #637593;
+  border-radius: 5px;
+
+  font-size: clamp(12px, 2vw, 22px);
+  cursor: pointer;
+}
+
+.geometry-page .symmetry-tile[aria-pressed="true"] {
+  background: #8be3e5;
+  border-color: #d4ffff;
+}
+
+.geometry-page .geometry-panel .mirror-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.geometry-page .mirror-control input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: #8be3e5;
+}
+
+.geometry-page .mirror-caption {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .geometry-page .geometry-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .geometry-page .geometry-panel {
+    padding: 20px;
+  }
+
+  .geometry-page .geometry-actions button {
+    flex: 1 1 120px;
+  }
+
+  .geometry-page .geometry-results dd {
+    font-size: 18px;
+  }
+}
