@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +10,43 @@
   >
   <title>Beyond the Numbers | Explore Math</title>
 
-  <link rel="stylesheet" href="static/css/style.css">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body class="home-page">
   <header>
-    <a href="index.html">Beyond the Numbers</a>
+    <a href="{% url 'mathematics:index' %}">Beyond the Numbers</a>
 
     <nav aria-label="Main navigation">
-      <a href="pages/patterns.html">Patterns</a>
-      <a href="pages/geometry.html">Geometry</a>
-      <a href="pages/probability.html">Probability</a>
-    </nav>
+    <a href="{% url 'mathematics:home' %}"
+       {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
+        Home
+    </a>
+    <a href="{% url 'mathematics:basic_math' %}"
+       {% if request.resolver_match.url_name == 'basic_math' %}aria-current="page"{% endif %}>
+        Basic Math
+    </a>
+    <a href="{% url 'mathematics:fractions' %}"
+       {% if request.resolver_match.url_name == 'fractions' %}aria-current="page"{% endif %}>
+        Fractions
+    </a>
+    <a href="{% url 'mathematics:patterns' %}"
+       {% if request.resolver_match.url_name == 'patterns' %}aria-current="page"{% endif %}>
+        Patterns
+    </a>
+    <a href="{% url 'mathematics:geometry' %}"
+       {% if request.resolver_match.url_name == 'geometry' %}aria-current="page"{% endif %}>
+        Geometry
+    </a>
+    <a href="{% url 'mathematics:probability' %}"
+       {% if request.resolver_match.url_name == 'probability' %}aria-current="page"{% endif %}>
+        Probability
+    </a>
+    <a href="{% url 'mathematics:codex' %}"
+       {% if request.resolver_match.url_name == 'codex' %}aria-current="page"{% endif %}>
+        Codex
+    </a>
+</nav>
   </header>
 
   <main>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +19,9 @@
   <link rel="stylesheet" href="../static/css/fractions.css">
   <link rel="stylesheet" href="../static/css/header.css">
 
-  <script defer src="../js/fractions.js"></script>
-  <script defer src="../js/fractions-practice.js"></script>
-  <script defer src="../js/fractions-products.js"></script>
+  <script src="{% static 'js/fractions.js' %}" defer></script>
+<script src="{% static 'js/fractions-practice.js' %}" defer></script>
+<script src="{% static 'js/fractions-products.js' %}" defer></script>
 
 </head>
 
@@ -35,13 +36,34 @@
     </a>
 
     <nav aria-label="Main navigation">
-  <a href="home.html">Home</a>
-  <a href="basic-math.html">Basic Math</a>
-  <a href="fractions.html" aria-current="page">Fractions</a>
-  <a href="patterns.html">Patterns</a>
-  <a href="geometry.html">Geometry</a>
-  <a href="probability.html">Probability</a>
-  <a href="codex.html">Codex</a>
+    <a href="{% url 'mathematics:home' %}"
+       {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
+        Home
+    </a>
+    <a href="{% url 'mathematics:basic_math' %}"
+       {% if request.resolver_match.url_name == 'basic_math' %}aria-current="page"{% endif %}>
+        Basic Math
+    </a>
+    <a href="{% url 'mathematics:fractions' %}"
+       {% if request.resolver_match.url_name == 'fractions' %}aria-current="page"{% endif %}>
+        Fractions
+    </a>
+    <a href="{% url 'mathematics:patterns' %}"
+       {% if request.resolver_match.url_name == 'patterns' %}aria-current="page"{% endif %}>
+        Patterns
+    </a>
+    <a href="{% url 'mathematics:geometry' %}"
+       {% if request.resolver_match.url_name == 'geometry' %}aria-current="page"{% endif %}>
+        Geometry
+    </a>
+    <a href="{% url 'mathematics:probability' %}"
+       {% if request.resolver_match.url_name == 'probability' %}aria-current="page"{% endif %}>
+        Probability
+    </a>
+    <a href="{% url 'mathematics:codex' %}"
+       {% if request.resolver_match.url_name == 'codex' %}aria-current="page"{% endif %}>
+        Codex
+    </a>
 </nav>
   </header>
 
